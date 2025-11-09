@@ -77,9 +77,13 @@ tuple<vector<Libro>, vector<Categoria>> MenuAgregarCategoria::ejecutar() {
         return make_tuple(libros, categorias);
     }
 
+    // Pedir descripción de la categoría
+    string descripcion;
+    cout << "Ingrese la descripcion de la categoria: ";
+    getline(cin, descripcion);
+
     // Crear categoría y agregarla al vector
-    // Como la categoría necesita un libro, usamos un string vacío o placeholder
-    Categoria nuevaCategoria("", nombre);
+    Categoria nuevaCategoria(nombre, descripcion);
     categorias.push_back(nuevaCategoria);
 
     cout << "\n¡Categoria agregada exitosamente!\n";

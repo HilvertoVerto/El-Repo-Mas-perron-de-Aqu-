@@ -5,25 +5,25 @@
 
 class Categoria {
 private:
-    std::string libro;
     std::string nombre;
+    std::string descripcion;
 
 public:
     // Constructor por defecto
     Categoria();
 
-    // Constructor con parámetros
-    Categoria(const std::string& libro, const std::string& nombre);
+    // Constructor con parametros
+    Categoria(const std::string& nombre, const std::string& descripcion);
 
-    // Getters (métodos constantes)
-    std::string getLibro() const;
+    // Getters (metodos constantes)
     std::string getNombre() const;
+    std::string getDescripcion() const;
 
     // Setters (argumentos constantes)
-    void setLibro(const std::string& libro);
     void setNombre(const std::string& nombre);
+    void setDescripcion(const std::string& descripcion);
 
-    // Método para mostrar información de la categoría
+    // Metodo para mostrar informacion de la categoria
     void mostrarInfo() const;
 };
 

@@ -23,11 +23,12 @@ tuple<vector<Libro>, vector<Categoria>> MenuEditar::ejecutar() {
         return make_tuple(libros, categorias);
     }
 
-    // Mostrar libros con sus categorías
+    // Mostrar libros
     cout << "Libros disponibles:\n\n";
     for (size_t i = 0; i < libros.size(); i++) {
         cout << i + 1 << ". " << libros[i].getNombre()
-             << " - " << categorias[i].getNombre() << "\n";
+             << " - " << libros[i].getAutor()
+             << " (" << libros[i].getAnio() << ")\n";
     }
 
     cout << "\n";
@@ -55,7 +56,7 @@ tuple<vector<Libro>, vector<Categoria>> MenuEditar::ejecutar() {
     cout << "Nombre: " << libros[indice].getNombre() << "\n";
     cout << "Autor: " << libros[indice].getAutor() << "\n";
     cout << "Año: " << libros[indice].getAnio() << "\n";
-    cout << "Categoria: " << categorias[indice].getNombre() << "\n";
+    cout << "Categoria: " << libros[indice].getCategoria() << "\n";
     cout << "========================================\n";
     cout << "\n";
 
@@ -117,9 +118,6 @@ tuple<vector<Libro>, vector<Categoria>> MenuEditar::ejecutar() {
     libros[indice].setNombre(nuevoNombre);
     libros[indice].setAutor(nuevoAutor);
     libros[indice].setAnio(nuevoAnio);
-
-    // Actualizar la categoría correspondiente (solo el nombre del libro)
-    categorias[indice].setLibro(nuevoNombre);
 
     // Mostrar mensaje de confirmación
     cout << "\n";

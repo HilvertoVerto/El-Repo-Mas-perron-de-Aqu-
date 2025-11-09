@@ -2,32 +2,32 @@
 #include <iostream>
 
 // Constructor por defecto
-Categoria::Categoria() : libro(""), nombre("") {}
+Categoria::Categoria() : nombre(""), descripcion("") {}
 
-// Constructor con parámetros
-Categoria::Categoria(const std::string& libro, const std::string& nombre)
-    : libro(libro), nombre(nombre) {}
+// Constructor con parametros
+Categoria::Categoria(const std::string& nombre, const std::string& descripcion)
+    : nombre(nombre), descripcion(descripcion) {}
 
 // Getters
-std::string Categoria::getLibro() const {
-    return libro;
-}
-
 std::string Categoria::getNombre() const {
     return nombre;
 }
 
-// Setters
-void Categoria::setLibro(const std::string& libro) {
-    this->libro = libro;
+std::string Categoria::getDescripcion() const {
+    return descripcion;
 }
 
+// Setters
 void Categoria::setNombre(const std::string& nombre) {
     this->nombre = nombre;
 }
 
-// Método para mostrar información
+void Categoria::setDescripcion(const std::string& descripcion) {
+    this->descripcion = descripcion;
+}
+
+// Metodo para mostrar informacion
 void Categoria::mostrarInfo() const {
-    std::cout << "Categoría: " << nombre << std::endl;
-    std::cout << "Libro: " << libro << std::endl;
+    std::cout << "Categoria: " << nombre << std::endl;
+    std::cout << "Descripcion: " << descripcion << std::endl;
 }

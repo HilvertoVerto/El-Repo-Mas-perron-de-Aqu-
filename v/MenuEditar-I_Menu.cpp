@@ -44,14 +44,67 @@ tuple<vector<Libro>, vector<Categoria>> MenuEditar::ejecutar() {
     }
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    // Siguiente parte - A implementar
-    /*
-    // Aquí iría el código para:
-    // 1. Mostrar los datos actuales del libro seleccionado
-    // 2. Pedir los nuevos datos (nombre, autor, año, categoría)
-    // 3. Actualizar el libro y categoría en los vectores
-    // 4. Retornar la tupla actualizada
-    */
+    // Obtener el índice del libro seleccionado
+    int indice = opcion - 1;
 
+    // Mostrar datos actuales del libro
+    cout << "\n";
+    cout << "========================================\n";
+    cout << "      DATOS ACTUALES DEL LIBRO          \n";
+    cout << "========================================\n";
+    cout << "Nombre: " << libros[indice].getNombre() << "\n";
+    cout << "Autor: " << libros[indice].getAutor() << "\n";
+    cout << "Año: " << libros[indice].getAnio() << "\n";
+    cout << "Categoria: " << categorias[indice].getNombre() << "\n";
+    cout << "========================================\n";
+    cout << "\n";
+
+    // Pedir nuevos datos
+    cout << "Ingrese los nuevos datos del libro:\n\n";
+
+    // Pedir nuevo nombre
+    string nuevoNombre;
+    cout << "Nuevo nombre del libro: ";
+    getline(cin, nuevoNombre);
+
+    // Pedir nuevo autor
+    string nuevoAutor;
+    cout << "Nuevo autor: ";
+    getline(cin, nuevoAutor);
+
+    // Pedir nuevo año
+    int nuevoAnio;
+    cout << "Nuevo año de publicacion: ";
+    while (!(cin >> nuevoAnio) || nuevoAnio < 0) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Año invalido. Ingrese un año valido: ";
+    }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    // Pedir nueva categoría
+    string nuevaCategoria;
+    cout << "Nueva categoria: ";
+    getline(cin, nuevaCategoria);
+
+    // Usar los setters para actualizar el libro
+    libros[indice].setNombre(nuevoNombre);
+    libros[indice].setAutor(nuevoAutor);
+    libros[indice].setAnio(nuevoAnio);
+    libros[indice].setCategoria(nuevaCategoria);
+
+    // Actualizar la categoría correspondiente
+    categorias[indice].setLibro(nuevoNombre);
+    categorias[indice].setNombre(nuevaCategoria);
+
+    // Mostrar mensaje de confirmación
+    cout << "\n";
+    cout << "========================================\n";
+    cout << "   Libro editado exitosamente!         \n";
+    cout << "========================================\n";
+    cout << "\nPresione Enter para continuar...";
+    cin.get();
+
+    // Retornar la tupla actualizada
     return make_tuple(libros, categorias);
 }

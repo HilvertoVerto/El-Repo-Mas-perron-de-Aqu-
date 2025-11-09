@@ -60,42 +60,66 @@ tuple<vector<Libro>, vector<Categoria>> MenuEditar::ejecutar() {
     cout << "\n";
 
     // Pedir nuevos datos
-    cout << "Ingrese los nuevos datos del libro:\n\n";
+    cout << "Ingrese los nuevos datos del libro (presione Enter para mantener el valor actual):\n\n";
 
     // Pedir nuevo nombre
     string nuevoNombre;
-    cout << "Nuevo nombre del libro: ";
+    cout << "Nuevo nombre del libro [" << libros[indice].getNombre() << "]: ";
     getline(cin, nuevoNombre);
+    // Si está vacío, mantener el valor actual
+    if (nuevoNombre.empty()) {
+        nuevoNombre = libros[indice].getNombre();
+    }
 
     // Pedir nuevo autor
     string nuevoAutor;
-    cout << "Nuevo autor: ";
+    cout << "Nuevo autor [" << libros[indice].getAutor() << "]: ";
     getline(cin, nuevoAutor);
+    // Si está vacío, mantener el valor actual
+    if (nuevoAutor.empty()) {
+        nuevoAutor = libros[indice].getAutor();
+    }
 
     // Pedir nuevo año
-    int nuevoAnio;
-    cout << "Nuevo año de publicacion: ";
-    while (!(cin >> nuevoAnio) || nuevoAnio < 0) {
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "Año invalido. Ingrese un año valido: ";
-    }
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    int nuevoAnio = libros[indice].getAnio();
+    string anioStr;
+    cout << "Nuevo año de publicacion [" << libros[indice].getAnio() << "]: ";
+    getline(cin, anioStr);
 
-    // Pedir nueva categoría
-    string nuevaCategoria;
-    cout << "Nueva categoria: ";
-    getline(cin, nuevaCategoria);
+    // Si no está vacío, intentar convertir a número
+    if (!anioStr.empty()) {
+        bool anioValido = false;
+        while (!anioValido) {
+            try {
+                nuevoAnio = stoi(anioStr);
+                if (nuevoAnio < 0) {
+                    cout << "Año invalido. Ingrese un año valido [" << libros[indice].getAnio() << "]: ";
+                    getline(cin, anioStr);
+                    if (anioStr.empty()) {
+                        nuevoAnio = libros[indice].getAnio();
+                        anioValido = true;
+                    }
+                } else {
+                    anioValido = true;
+                }
+            } catch (...) {
+                cout << "Año invalido. Ingrese un año valido [" << libros[indice].getAnio() << "]: ";
+                getline(cin, anioStr);
+                if (anioStr.empty()) {
+                    nuevoAnio = libros[indice].getAnio();
+                    anioValido = true;
+                }
+            }
+        }
+    }
 
     // Usar los setters para actualizar el libro
     libros[indice].setNombre(nuevoNombre);
     libros[indice].setAutor(nuevoAutor);
     libros[indice].setAnio(nuevoAnio);
-    libros[indice].setCategoria(nuevaCategoria);
 
-    // Actualizar la categoría correspondiente
+    // Actualizar la categoría correspondiente (solo el nombre del libro)
     categorias[indice].setLibro(nuevoNombre);
-    categorias[indice].setNombre(nuevaCategoria);
 
     // Mostrar mensaje de confirmación
     cout << "\n";

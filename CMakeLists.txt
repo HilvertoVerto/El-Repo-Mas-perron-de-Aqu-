@@ -88,6 +88,11 @@ set(DB_SOURCES
     db/RepositorioLibros.cpp
 )
 
+# Archivos fuente - Utilidades
+set(UTILS_SOURCES
+    utils/LimpiarPantalla.cpp
+)
+
 # Archivo principal
 set(MAIN_SOURCE
     main.cpp
@@ -100,6 +105,7 @@ add_executable(biblioteca
     ${CONTROLLER_SOURCES}
     ${VIEW_SOURCES}
     ${DB_SOURCES}
+    ${UTILS_SOURCES}
 )
 
 # Directorios de includes
@@ -119,6 +125,7 @@ source_group("Source Files\\Models" FILES ${MODEL_SOURCES})
 source_group("Source Files\\Controllers" FILES ${CONTROLLER_SOURCES})
 source_group("Source Files\\Views" FILES ${VIEW_SOURCES})
 source_group("Source Files\\Database" FILES ${DB_SOURCES})
+source_group("Source Files\\Utils" FILES ${UTILS_SOURCES})
 source_group("Source Files" FILES ${MAIN_SOURCE})
 
 # Crear directorio db/ en tiempo de compilación si no existe

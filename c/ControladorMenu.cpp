@@ -1,4 +1,5 @@
 #include "ControladorMenu.h"
+#include "../utils/LimpiarPantalla.h"
 #include <iostream>
 #include <limits>
 
@@ -61,6 +62,9 @@ tuple<vector<Libro>, vector<Categoria>> ControladorMenu::mostrarMenuPrincipal(
     bool salir = false;
 
     while (!salir) {
+        // Limpiar la pantalla antes de mostrar el menú
+        LimpiarPantalla();
+
         cout << "\n";
         cout << "========================================\n";
         cout << "       SISTEMA DE GESTION DE LIBROS     \n";

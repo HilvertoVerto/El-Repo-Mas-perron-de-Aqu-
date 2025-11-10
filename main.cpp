@@ -1,8 +1,12 @@
 #include "c/ControladorPrincipal.h"
+#include "utils/LimpiarPantalla.h"
 #include <iostream>
 
 int main() {
     try {
+        // Limpiar la pantalla al inicio
+        LimpiarPantalla();
+
         // Crear el controlador principal
         // La base de datos se creara en db/biblioteca.db
         ControladorPrincipal controlador;

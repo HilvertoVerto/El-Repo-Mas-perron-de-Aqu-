@@ -1,4 +1,5 @@
 #include "ControladorPrincipal.h"
+#include "../utils/LimpiarPantalla.h"
 #include <iostream>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -32,6 +33,8 @@ ControladorPrincipal::~ControladorPrincipal() {
 
 void ControladorPrincipal::iniciar() {
     try {
+        LimpiarPantalla();
+
         cout << "\n";
         cout << "========================================\n";
         cout << "   SISTEMA DE GESTION DE BIBLIOTECA    \n";

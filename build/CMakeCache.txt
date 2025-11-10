@@ -214,7 +214,7 @@ PKG_CONFIG_ARGN:STRING=
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
 //Path to a file.
-SQLITE_ORM_INCLUDE_DIR:PATH=SQLITE_ORM_INCLUDE_DIR-NOTFOUND
+SQLITE_ORM_INCLUDE_DIR:PATH=/home/hilvertoverto/Programacion/Cpp/El-Repo-Mas-perron-de-Aqu-/external
 
 //Path to a file.
 SQLite3_INCLUDE_DIR:PATH=/usr/include

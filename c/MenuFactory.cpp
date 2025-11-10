@@ -9,9 +9,6 @@ unique_ptr<I_Menu> MenuFactory::crearMenu(
     const vector<Categoria>& categorias
 ) {
     switch (tipo) {
-        case TipoMenu::AGREGAR:
-            return make_unique<MenuAgregar>(libros, categorias);
-
         case TipoMenu::AGREGAR_LIBRO:
             return make_unique<MenuAgregarLibro>(libros, categorias);
 
@@ -33,9 +30,7 @@ TipoMenu MenuFactory::stringATipoMenu(const string& tipo) {
     string tipoLower = tipo;
     transform(tipoLower.begin(), tipoLower.end(), tipoLower.begin(), ::tolower);
 
-    if (tipoLower == "agregar") {
-        return TipoMenu::AGREGAR;
-    } else if (tipoLower == "agregar_libro" || tipoLower == "agregarlibro") {
+    if (tipoLower == "agregar_libro" || tipoLower == "agregarlibro") {
         return TipoMenu::AGREGAR_LIBRO;
     } else if (tipoLower == "agregar_categoria" || tipoLower == "agregarcategoria") {
         return TipoMenu::AGREGAR_CATEGORIA;

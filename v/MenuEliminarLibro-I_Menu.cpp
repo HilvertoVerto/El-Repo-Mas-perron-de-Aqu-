@@ -1,4 +1,5 @@
 #include "MenuEliminarLibro-I_Menu.h"
+#include "../utils/LimpiarPantalla.h"
 #include <limits>
 
 using namespace std;
@@ -9,6 +10,8 @@ MenuEliminarLibro::MenuEliminarLibro(const vector<Libro>& libros, const vector<C
 }
 
 tuple<vector<Libro>, vector<Categoria>> MenuEliminarLibro::ejecutar() {
+    LimpiarPantalla();
+
     cout << "\n";
     cout << "========================================\n";
     cout << "          ELIMINAR LIBRO                \n";

@@ -1,4 +1,5 @@
 #include "MenuEditar-I_Menu.h"
+#include "../utils/LimpiarPantalla.h"
 #include <limits>
 
 using namespace std;
@@ -9,6 +10,8 @@ MenuEditar::MenuEditar(const vector<Libro>& libros, const vector<Categoria>& cat
 }
 
 tuple<vector<Libro>, vector<Categoria>> MenuEditar::ejecutar() {
+    LimpiarPantalla();
+
     cout << "\n";
     cout << "========================================\n";
     cout << "          EDITAR LIBRO                  \n";

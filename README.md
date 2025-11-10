@@ -2,6 +2,20 @@
 
 Sistema completo de gestión de libros y categorías desarrollado en C++ con arquitectura MVC, patrones de diseño y persistencia en SQLite.
 
+## 🚀 Inicio Rápido
+
+Para compilar y ejecutar el proyecto fácilmente, usa el script Python:
+
+```bash
+./run.py
+```
+
+Este script automáticamente:
+- ✅ Detecta si el proyecto necesita compilación
+- ✅ Compila el proyecto con CMake si es necesario
+- ✅ Ejecuta el programa desde la raíz del proyecto
+- ✅ Asegura que la base de datos se cree en la ubicación correcta (`db/biblioteca.db`)
+
 ## ✨ Características
 
 - ✅ **CRUD completo** de libros y categorías
@@ -105,8 +119,15 @@ El-Repo-Mas-perron-de-Aqu-/
 │   ├── MenuEditar-I_Menu.h/cpp
 │   └── MenuEliminarLibro-I_Menu.h/cpp
 │
+├── utils/                          # Utilidades
+│   ├── LimpiarPantalla.h/cpp       # Función para limpiar pantalla
+│
+├── build/                          # Archivos de compilación (generado)
+│   └── biblioteca                  # Ejecutable
+│
 ├── main.cpp                        # Punto de entrada
-├── Makefile                        # Script de compilación
+├── CMakeLists.txt                  # Configuración de CMake
+├── run.py                          # Script para compilar y ejecutar
 └── README.md                       # Este archivo
 ```
 
@@ -115,9 +136,10 @@ El-Repo-Mas-perron-de-Aqu-/
 ### Software Necesario
 
 - **g++** con soporte para C++17 o superior
+- **CMake** 3.10 o superior
 - **SQLite3** (biblioteca)
-- **SQLite ORM** (header-only)
-- **Make** (para compilación)
+- **SQLite ORM** (header-only library)
+- **Python 3** (para el script run.py)
 - **Git** (opcional, para clonar)
 
 ### Sistemas Operativos
@@ -132,17 +154,36 @@ El-Repo-Mas-perron-de-Aqu-/
 
 #### En Arch Linux:
 ```bash
-sudo pacman -S gcc make sqlite
+# Instalar todas las dependencias necesarias
+sudo pacman -S gcc cmake sqlite python
+
+# Verificar instalación
+cmake --version
+python --version
+sqlite3 --version
 ```
 
 #### En Ubuntu/Debian:
 ```bash
-sudo apt install build-essential libsqlite3-dev
+# Instalar todas las dependencias necesarias
+sudo apt update
+sudo apt install build-essential cmake libsqlite3-dev python3
+
+# Verificar instalación
+cmake --version
+python3 --version
+sqlite3 --version
 ```
 
 #### En macOS:
 ```bash
-brew install sqlite3
+# Instalar dependencias con Homebrew
+brew install cmake sqlite3 python3
+
+# Verificar instalación
+cmake --version
+python3 --version
+sqlite3 --version
 ```
 
 ### 2. Instalar SQLite ORM
@@ -171,34 +212,47 @@ cd El-Repo-Mas-perron-de-Aqu-
 
 ## 🚀 Compilación y Ejecución
 
-### Compilar
+### Método Recomendado: Script Python (run.py)
+
+El método más simple y recomendado es usar el script `run.py`:
 
 ```bash
-make
+# Dar permisos de ejecución (solo la primera vez)
+chmod +x run.py
+
+# Compilar y ejecutar automáticamente
+./run.py
 ```
 
-### Ejecutar
+**Ventajas del script:**
+- ✅ Compila automáticamente si es necesario
+- ✅ Ejecuta el programa desde la raíz (base de datos en `db/biblioteca.db`)
+- ✅ Detecta si el proyecto ya está compilado
+- ✅ Muestra mensajes informativos claros
+
+### Método Manual: CMake
+
+Si prefieres compilar manualmente:
 
 ```bash
-./biblioteca
-```
+# Configurar el proyecto con CMake
+cmake -S . -B build
 
-### Compilar y ejecutar directamente
+# Compilar
+cmake --build build
 
-```bash
-make run
+# Ejecutar (desde la raíz del proyecto)
+./build/biblioteca
 ```
 
 ### Limpiar archivos compilados
 
 ```bash
-make clean
-```
+# Eliminar la carpeta build
+rm -rf build
 
-### Limpiar todo (incluye base de datos)
-
-```bash
-make clean-all
+# Eliminar la base de datos
+rm -rf db
 ```
 
 ## 📖 Uso del Sistema
@@ -293,7 +347,8 @@ SELECT * FROM categorias;   # Ver categorías
 - **Base de Datos**: SQLite3
 - **ORM**: [SQLite ORM](https://github.com/fnc12/sqlite_orm)
 - **Compilador**: GCC/Clang
-- **Build System**: Make
+- **Build System**: CMake
+- **Script de Automatización**: Python 3
 
 ## 📚 Conceptos Aplicados
 

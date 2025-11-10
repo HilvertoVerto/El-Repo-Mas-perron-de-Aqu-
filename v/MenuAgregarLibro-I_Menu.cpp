@@ -1,4 +1,5 @@
 #include "MenuAgregarLibro-I_Menu.h"
+#include "../utils/LimpiarPantalla.h"
 #include <limits>
 
 using namespace std;
@@ -9,6 +10,8 @@ MenuAgregarLibro::MenuAgregarLibro(const vector<Libro>& libros, const vector<Cat
 }
 
 tuple<vector<Libro>, vector<Categoria>> MenuAgregarLibro::ejecutar() {
+    LimpiarPantalla();
+
     cout << "\n";
     cout << "========================================\n";
     cout << "          AGREGAR LIBRO                 \n";

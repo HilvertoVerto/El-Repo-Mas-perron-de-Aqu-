@@ -5,6 +5,7 @@
 
 class Libro {
 private:
+    int id;
     std::string nombre;
     std::string autor;
     int anio;
@@ -14,22 +15,24 @@ public:
     // Constructor por defecto
     Libro();
 
-    // Constructor con parámetros
+    // Constructor con parametros (sin ID, se asigna automaticamente)
     Libro(const std::string& nombre, const std::string& autor, int anio, const std::string& categoria);
 
-    // Getters (métodos constantes)
+    // Getters (metodos constantes)
+    int getId() const;
     std::string getNombre() const;
     std::string getAutor() const;
     int getAnio() const;
     std::string getCategoria() const;
 
     // Setters (argumentos constantes)
+    void setId(int id);
     void setNombre(const std::string& nombre);
     void setAutor(const std::string& autor);
     void setAnio(const int anio);
     void setCategoria(const std::string& categoria);
 
-    // Método para mostrar información del libro
+    // Metodo para mostrar informacion del libro
     void mostrarInfo() const;
 };
 

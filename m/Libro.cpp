@@ -2,13 +2,17 @@
 #include <iostream>
 
 // Constructor por defecto
-Libro::Libro() : nombre(""), autor(""), anio(0), categoria("") {}
+Libro::Libro() : id(-1), nombre(""), autor(""), anio(0), categoria("") {}
 
-// Constructor con parámetros
+// Constructor con parametros
 Libro::Libro(const std::string& nombre, const std::string& autor, int anio, const std::string& categoria)
-    : nombre(nombre), autor(autor), anio(anio), categoria(categoria) {}
+    : id(-1), nombre(nombre), autor(autor), anio(anio), categoria(categoria) {}
 
 // Getters
+int Libro::getId() const {
+    return id;
+}
+
 std::string Libro::getNombre() const {
     return nombre;
 }
@@ -26,6 +30,10 @@ std::string Libro::getCategoria() const {
 }
 
 // Setters
+void Libro::setId(int id) {
+    this->id = id;
+}
+
 void Libro::setNombre(const std::string& nombre) {
     this->nombre = nombre;
 }
